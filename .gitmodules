@@ -1,0 +1,3 @@
+[submodule "Poseidon/vendor/spdloglib"]
+	path = Poseidon/vendor/spdloglib
+	url = https://github.com/gabime/spdlog
