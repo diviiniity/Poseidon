@@ -1,3 +1,4 @@
+#include "pspch.h"
 #include "Log.h"
 
 namespace Poseidon {

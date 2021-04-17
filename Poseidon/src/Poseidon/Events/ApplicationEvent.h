@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Poseidon {
 
 	class POSEIDON_API WindowResizeEvent : public Event

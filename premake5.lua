@@ -19,6 +19,9 @@ project "Poseidon"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "pspch.h"
+	pchsource "Poseidon/src/pspch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

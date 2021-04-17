@@ -1,9 +1,7 @@
 #pragma once
 
+#include "pspch.h"
 #include "../Core.h"
-
-#include <string>
-#include <functional>
 
 namespace Poseidon {
 
