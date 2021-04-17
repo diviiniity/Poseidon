@@ -27,6 +27,7 @@ project "Poseidon"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdloglib/include"
 	}
 
