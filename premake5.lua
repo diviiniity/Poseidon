@@ -1,6 +1,5 @@
 workspace "Poseidon"
 	architecture "x64"
-	startproject "Sandbox"
 
 	configurations
 	{
@@ -10,6 +9,12 @@ workspace "Poseidon"
 	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Poseidon/vendor/GLFWlib/include"
+
+include "Poseidon/vendor/GLFWlib"
 
 project "Poseidon"
 	location "Poseidon"
@@ -31,7 +36,14 @@ project "Poseidon"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdloglib/include"
+		"%{prj.name}/vendor/spdloglib/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links 
+	{ 
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -44,7 +56,6 @@ project "Poseidon"
 			"PS_PLATFORM_WINDOWS",
 			"PS_BUILD_DLL"
 		}
-
 
 	filter "configurations:Debug"
 		defines "PS_DEBUG"
@@ -108,4 +119,4 @@ project "Sandbox"
 
 	filter "configurations:Dist"
 		defines "PS_DIST"
-		optimize "On" 
+		optimize "On"

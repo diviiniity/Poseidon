@@ -4,12 +4,13 @@
 #include "Events/KeyEvent.h"
 #include "Log.h"
 
-
+#include <GLFW/glfw3.h>
 
 namespace Poseidon {
 
 	Application::Application()
 	{
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -18,18 +19,13 @@ namespace Poseidon {
 
 	void Application::Run()
 	{
-		KeyPressedEvent e(70, 720);
-		if (e.IsInCategory(EventCategoryApplication))
-		{
-			PS_TRACE(e);
-		}
-		if (e.IsInCategory(EventCategoryInput))
-		{
-			PS_TRACE(e);
-			PS_WARN(e.GetName());
-		}
 
-		while (true);
+		while (m_Running)
+		{
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
+		}
 
 	}
 }
