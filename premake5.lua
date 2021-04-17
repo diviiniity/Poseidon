@@ -12,9 +12,9 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "Poseidon/vendor/GLFWlib/include"
+IncludeDir["GLFW"] = "Poseidon/vendor/GLFW/include"
 
-include "Poseidon/vendor/GLFWlib"
+include "Poseidon/vendor/GLFW"
 
 project "Poseidon"
 	location "Poseidon"
@@ -36,7 +36,7 @@ project "Poseidon"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdloglib/include",
+		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}"
 	}
 
@@ -85,7 +85,7 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Poseidon/vendor/spdloglib/include",
+		"Poseidon/vendor/spdlog/include",
 		"Poseidon/src"
 	}
 

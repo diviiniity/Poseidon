@@ -1,6 +1,6 @@
-[submodule "Poseidon/vendor/spdloglib"]
-	path = Poseidon/vendor/spdloglib
+[submodule "Poseidon/vendor/spdlog"]
+	path = Poseidon/vendor/spdlog
 	url = https://github.com/gabime/spdlog
-[submodule "Poseidon/vendor/GLFWlib"]
-	path = Poseidon/vendor/GLFWlib
-	url = https://github.com/diviiniity/glfw
+[submodule "Poseidon/vendor/GLFW"]
+	path = Poseidon/vendor/GLFW
+	url = https://github.com/diviiniity/GLFW
