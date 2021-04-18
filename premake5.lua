@@ -14,8 +14,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Poseidon/vendor/GLFW/include"
+IncludeDir["Glad"] = "Poseidon/vendor/Glad/include"
 
 include "Poseidon/vendor/GLFW"
+include "Poseidon/vendor/Glad"
 
 project "Poseidon"
 	location "Poseidon"
@@ -38,12 +40,14 @@ project "Poseidon"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links 
 	{ 
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -55,7 +59,8 @@ project "Poseidon"
 		defines
 		{
 			"PS_PLATFORM_WINDOWS",
-			"PS_BUILD_DLL"
+			"PS_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Debug"

@@ -2,8 +2,8 @@
 .vs/
 /bin/
 /bin-int/
-/Poseidon/vendor/GLFW/bin/
-/Poseidon/vendor/GLFW/bin-int/
+/Poseidon/vendor/Glad/bin/
+/Poseidon/vendor/Glad/bin-int/
 
 # Files
 *.user
