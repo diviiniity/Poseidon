@@ -8,11 +8,6 @@ public:
 	{
 	}
 
-	void OnUpdate() override
-	{
-		PS_INFO("ExampleLayer::Update");
-	}
-
 	void OnEvent(Poseidon::Event& event) override
 	{
 		PS_TRACE("{0}", event);
@@ -25,6 +20,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Poseidon::ImGuiLayer());
 	}
 
 	~Sandbox()

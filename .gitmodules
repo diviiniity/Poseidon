@@ -4,3 +4,6 @@
 [submodule "Poseidon/vendor/GLFW"]
 	path = Poseidon/vendor/GLFW
 	url = https://github.com/diviiniity/GLFW
+[submodule "Poseidon/vendor/imgui"]
+	path = Poseidon/vendor/imgui
+	url = https://github.com/TheCherno/imgui

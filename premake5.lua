@@ -15,9 +15,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Poseidon/vendor/GLFW/include"
 IncludeDir["Glad"] = "Poseidon/vendor/Glad/include"
+IncludeDir["ImGui"] = "Poseidon/vendor/imgui"
 
 include "Poseidon/vendor/GLFW"
 include "Poseidon/vendor/Glad"
+include "Poseidon/vendor/imgui"
 
 project "Poseidon"
 	location "Poseidon"
@@ -41,13 +43,15 @@ project "Poseidon"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links 
 	{ 
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -64,7 +68,11 @@ project "Poseidon"
 		}
 
 	filter "configurations:Debug"
-		defines "PS_DEBUG"
+		defines
+		{
+			"PS_DEBUG",
+			"PS_ENABLE_ASSERTS"
+		}
 		buildoptions "/MDd"
 		symbols "On"
 
@@ -119,7 +127,11 @@ project "Sandbox"
 		}
 
 	filter "configurations:Debug"
-		defines "PS_DEBUG"
+		defines
+		{
+			"PS_DEBUG",
+			"PS_ENABLE_ASSERTS"
+		}
 		buildoptions "/MDd"
 		symbols "On"
 
