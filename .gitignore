@@ -1,7 +1,9 @@
 # Directories
 .vs/
 /bin/
-bin-int/
+/bin-int/
+/Poseidon/vendor/GLFW/bin/
+/Poseidon/vendor/GLFW/bin-int/
 
 # Files
 *.user

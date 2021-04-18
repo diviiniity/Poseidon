@@ -1,5 +1,6 @@
 workspace "Poseidon"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
