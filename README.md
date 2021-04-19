@@ -14,6 +14,14 @@ If you are on Windows and have Visual Studio 2019+ installed, double click the `
 
 Alternatively, you can open a command prompt in the engine's root folder and run:
   `call vendor\bin\premake\premake5.exe vs2019`   
+
+## Dependencies
+
+- [Premake](https://github.com/premake/premake-core)
+- [Glad](https://github.com/Dav1dde/glad/)
+- [GLFW](https://github.com/glfw/glfw)
+- [imgui](https://github.com/ocornut/imgui)
+- [spdlog](https://github.com/gabime/spdlog)
   
 ## Credit for inspiration
 
