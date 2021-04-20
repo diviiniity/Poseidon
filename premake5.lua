@@ -17,14 +17,18 @@ IncludeDir["GLFW"] = "Poseidon/vendor/GLFW/include"
 IncludeDir["Glad"] = "Poseidon/vendor/Glad/include"
 IncludeDir["ImGui"] = "Poseidon/vendor/imgui"
 
-include "Poseidon/vendor/GLFW"
-include "Poseidon/vendor/Glad"
-include "Poseidon/vendor/imgui"
+group "Dependencies"
+	include "Poseidon/vendor/GLFW"
+	include "Poseidon/vendor/Glad"
+	include "Poseidon/vendor/imgui"
+
+group ""
 
 project "Poseidon"
 	location "Poseidon"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -55,9 +59,13 @@ project "Poseidon"
 		"opengl32.lib"
 	}
 
+	postbuildcommands
+	{
+		"xcopy /y $(SolutionDir)bin\\" .. outputdir .. "\\Poseidon\\Poseidon.dll $(SolutionDir)bin\\" .. outputdir .. "\\Sandbox\\"
+	}
+
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -73,23 +81,24 @@ project "Poseidon"
 			"PS_DEBUG",
 			"PS_ENABLE_ASSERTS"
 		}
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PS_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PS_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -111,14 +120,8 @@ project "Sandbox"
 		"Poseidon"
 	}
 
-	postbuildcommands
-	{
-		"xcopy /y $(SolutionDir)bin\\" .. outputdir .. "\\Poseidon\\Poseidon.dll $(SolutionDir)bin\\" .. outputdir .. "\\Sandbox"
-	}
-
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -132,15 +135,15 @@ project "Sandbox"
 			"PS_DEBUG",
 			"PS_ENABLE_ASSERTS"
 		}
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "PS_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "PS_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
