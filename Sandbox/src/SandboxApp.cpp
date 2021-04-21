@@ -1,5 +1,7 @@
 #include <Poseidon.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Poseidon::Layer
 {
 public:
@@ -12,6 +14,13 @@ public:
 	{
 		if (Poseidon::Input::IsKeyPressed(PS_KEY_TAB))
 			PS_TRACE("Tab key is pressed (poll)");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello world!");
+		ImGui::End();
 	}
 
 	void OnEvent(Poseidon::Event& event) override
@@ -32,7 +41,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Poseidon::ImGuiLayer());
 	}
 
 	~Sandbox()

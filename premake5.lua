@@ -27,9 +27,10 @@ group ""
 
 project "Poseidon"
 	location "Poseidon"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -43,6 +44,11 @@ project "Poseidon"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
+	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -63,19 +69,12 @@ project "Poseidon"
 		"opengl32.lib"
 	}
 
-	postbuildcommands
-	{
-		"xcopy /y $(SolutionDir)bin\\" .. outputdir .. "\\Poseidon\\Poseidon.dll $(SolutionDir)bin\\" .. outputdir .. "\\Sandbox\\"
-	}
-
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
 		{
 			"PS_PLATFORM_WINDOWS",
-			"PS_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
 
@@ -86,23 +85,24 @@ project "Poseidon"
 			"PS_ENABLE_ASSERTS"
 		}
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "PS_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "PS_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -110,13 +110,14 @@ project "Sandbox"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
 	}
 
 	includedirs
 	{
 		"Poseidon/vendor/spdlog/include",
 		"Poseidon/src",
+		"Poseidon/vendor",
 		"%{IncludeDir.glm}"
 	}
 
@@ -126,7 +127,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -141,14 +141,14 @@ project "Sandbox"
 			"PS_ENABLE_ASSERTS"
 		}
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "PS_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "PS_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"

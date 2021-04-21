@@ -22,6 +22,7 @@ Alternatively, you can open a command prompt in the engine's root folder and run
 - [GLFW](https://github.com/glfw/glfw)
 - [imgui](https://github.com/ocornut/imgui)
 - [spdlog](https://github.com/gabime/spdlog)
+- [glm](https://github.com/g-truc/glm)
   
 ## Credit for inspiration
 

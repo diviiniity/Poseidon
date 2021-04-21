@@ -2,11 +2,15 @@
 
 
 #ifdef PS_PLATFORM_WINDOWS
+#if PS_DYNAMIC_LINK
 	#ifdef PS_BUILD_DLL
 		#define POSEIDON_API __declspec(dllexport)
 	#else
 		#define POSEIDON_API __declspec(dllimport)
 	#endif
+#else
+	#define POSEIDON_API
+#endif
 #else
 	#error Poseidon only supports Windows
 #endif

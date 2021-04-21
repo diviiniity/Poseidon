@@ -7,6 +7,8 @@
 #include "Poseidon/Events/Event.h"
 #include "Poseidon/Events/ApplicationEvent.h"
 
+#include "Poseidon/ImGui/ImGuiLayer.h"
+
 namespace Poseidon {
 
 	class POSEIDON_API Application
@@ -29,6 +31,7 @@ namespace Poseidon {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:
