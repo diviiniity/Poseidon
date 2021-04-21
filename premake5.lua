@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Poseidon/vendor/GLFW/include"
 IncludeDir["Glad"] = "Poseidon/vendor/Glad/include"
 IncludeDir["ImGui"] = "Poseidon/vendor/imgui"
+IncludeDir["glm"] = "Poseidon/vendor/glm"
 
 group "Dependencies"
 	include "Poseidon/vendor/GLFW"
@@ -39,7 +40,9 @@ project "Poseidon"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -48,7 +51,8 @@ project "Poseidon"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links 
@@ -112,7 +116,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Poseidon/vendor/spdlog/include",
-		"Poseidon/src"
+		"Poseidon/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links
