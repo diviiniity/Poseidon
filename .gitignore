@@ -10,3 +10,4 @@
 *.vcxproj
 *.sln
 *.filters
+Sandbox/imgui.ini

@@ -113,6 +113,11 @@ project "Sandbox"
 		"%{prj.name}/src/**.cpp",
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	includedirs
 	{
 		"Poseidon/vendor/spdlog/include",
