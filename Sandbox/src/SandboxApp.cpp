@@ -12,8 +12,6 @@ public:
 
 	void OnUpdate() override
 	{
-		if (Poseidon::Input::IsKeyPressed(PS_KEY_TAB))
-			PS_TRACE("Tab key is pressed (poll)");
 	}
 
 	virtual void OnImGuiRender() override
@@ -27,10 +25,6 @@ public:
 	{
 		if (event.GetEventType() == Poseidon::EventType::KeyPressed)
 		{
-			Poseidon::KeyPressedEvent& e = (Poseidon::KeyPressedEvent&)event;
-			if (e.GetKeyCode() == PS_KEY_TAB)
-				PS_TRACE("Tab key is pressed (event)");
-			PS_TRACE("{0}", (char)e.GetKeyCode());
 		}
 	}
 };
